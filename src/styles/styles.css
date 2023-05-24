@@ -1,22 +1,28 @@
+* {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0f1923;
+  color: #fff;
+}
+
 .search-bar {
     width: 300px;
     margin: 0 auto;
     padding: 20px;
-    border: 1px solid #000;
+    border: 1px solid white;
     border-radius: 5px;
   }
   
   .search-bar form {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: centser;
   }
   
   .search-bar input[type="text"] {
     width: 200px;
     padding: 5px;
     margin-right: 10px;
-    border: 1px solid #000;
+    border: 1px solid white;
     border-radius: 3px;
   }
   
@@ -45,4 +51,63 @@
     margin-right: 10px;
     object-fit: cover;
   }
+  
+.nav {
+  color: #1db954
+}
+
+.btn {
+  border-radius: 3px;
+  color: #1db954
+}
+
+.navbar {
+  position: fixed;
+  background-color: #000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  color: #1db954;
+  background-color: #000;
+}
+
+.navbar li:last-child {
+  margin-left: auto;
+}
+
+.navbar li {
+  margin-right: 10px; /* Adjust the spacing between navbar items */
+  align-items: center;
+}
+
+.login {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.login .btn{
+  font-weight: bold;
+  border-radius: 5px;
+  border-style: none;
+  flex-grow: 1;
+  background-color: #1db954;
+  color: #fff;
+}
+
+.login .btn:hover {
+  border-color: #1db954;
+  background-color: #35bf6c;
+}
   

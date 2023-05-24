@@ -1,10 +1,10 @@
-import {useState,useEffect} from "react";
+import React, {useState,useEffect} from "react";
 import {searchTrack} from "./apiCalls";
 const SearchBar = (props) => {
-    const [text,setText] = useState();
+    const [text,setText] = useState("text");
     const [tracks,setTracks] = useState([]);
     const handleChange = (e) => {
-        console.log(e.target.value);
+        //console.log(e.target.value);
         //setText(e.target.value)
         //here an api call should be made!
         //should be in application state, but lets put it in component state first
@@ -12,12 +12,14 @@ const SearchBar = (props) => {
     }
 
     const handleSubmit = async (e) => {
+      //If data is not retrieved here,
+      //it is most likely do to access token 
+      //being expired!
         e.preventDefault();
-        console.log("trackName==!!!",text);
         const data = await searchTrack(text,props.token);
-        //can remove later
-        console.log("What we are looking for",data.tracks.items);
-        setTracks(data.tracks.items.map(track => track))
+        setTracks(data.tracks.items.map(track => {
+          //console.log("track ID:",track.id);
+          return track}))
     }
     return (
         <div className="search-bar">
@@ -30,25 +32,23 @@ const SearchBar = (props) => {
           
             {tracks.length > 0 ? (
               tracks.map((track) => (
-                <tr key={track} 
-                onClick={() => {
-                  //console.log("works here!!");
-                  //console.log("trackname:",track.name);
-                  props.setCurrentSong(track.name)
-                  }
-                  }>
-                  <div className="track-info">
-                    <img src={track.album.images[0].url} alt="" />
-                    <div>
-                      <p>{track.name}</p>
-                      <p>{track.album.name}</p>
-                    </div>
-                  </div>
-                </tr>
+                <React.Fragment key = {track.id}>
+                  <tr className="track-info"
+                  onClick={() => {
+                    //console.log("works here!!");
+                    //console.log("trackname:",track.name);
+                    props.setCurrentSong(track.name)
+                    }
+                    }>
+                        <td><img src={track.album.images[0].url} alt="" /></td>
+                        <td>{track.name}</td>
+                        <td>{track.album.name}</td>
+                  </tr>
+                </React.Fragment>
               ))
             ) : (
                 <tr>
-                    <td className="no-data" colSpan="2">No data</td>
+                    <td className="no-data" colSpan="2">Make a search!</td>
                 </tr>
             )}
         </tbody>

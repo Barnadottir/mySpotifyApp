@@ -4,6 +4,7 @@ import { useSession,signOut} from "next-auth/react"
 import {useState,useEffect} from "react";
 import SearchBar from "./SearchBar";
 import Player from "./Player";
+import Navbar from "../components/Navbar"
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
@@ -20,12 +21,8 @@ export default function Home() {
 
   return (
     <div>
+      <Navbar/>
       <p>Welcome, {session?.user.email}</p>
-      <button onClick={() => console.log("I am a button!")
-      }>click me!</button>
-      <form>
-        <input/>
-      </form>
       <SearchBar 
       token = {token}
       setCurrentSong = {(songName) => setCurrentSong(songName)}
@@ -33,8 +30,6 @@ export default function Home() {
       <Player 
       token = {token}
       currentSong = {currentSong}/>
-      <p>Sign out</p>
-      <button onClick = {() => signOut()}>sign out</button>
     </div>
   )
 }

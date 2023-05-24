@@ -1,19 +1,19 @@
 import {getPlayer} from "./apiCalls";
 import {useState,useEffect} from "react";
 const Player = (props) => {
-    const [myData,setMyData] = useState();
+    //const [myData,setMyData] = useState();
     
-    getPlayer(props.token);
+    /*getPlayer(props.token);
     if(!myData) {
         const data = getPlayer(props.token);
         setMyData(data);
-    }
+    }*/
 
-    console.log("DATA",myData);
+    //console.log("DATA",myData);
 
     return (
         <div>
-            hej
+            Player data will be displayed here!
         </div>
     )
 }
